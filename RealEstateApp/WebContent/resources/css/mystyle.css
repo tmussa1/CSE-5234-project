@@ -1,0 +1,80 @@
+@CHARSET "ISO-8859-1";
+
+.title{
+	text-align:center;
+	font-weight:bold;
+	color:blue;
+}
+
+.ads{
+	text-align:center;
+	font-style:italic;
+	font-family:Sans-serif;
+	color:red;
+}
+.btn_1{
+	padding:10px;
+	margin-left:50%;
+}
+
+.trow_1{
+	background-color:red;
+	font-weight:bold;
+	outline:none;
+}
+
+.trow_2{
+	background-color:green;
+	font-weight:bold;
+	outline:none;
+}
+
+.image_column{
+  float: left;
+  width: 50%;
+  padding: 5px;
+  font-weight:bold;
+}
+
+.contact{
+	left:35%;
+}
+.copyright{
+	background-color: grey;
+	text-align: center;
+	margin-top:50%;
+	left:50%;
+}
+.image_container{
+	background-size:cover;
+	background: url("https://www.bfvlaw.com/wp-content/uploads/2017/11/Real-estate.jpg") no-repeat fixed center;
+}
+ #jumb_page{
+ 	position:absolute;
+ 	top:60%;
+ 	text-align:center;
+ 	left:40%;
+ 	width:120%;
+ 	transform:translate(-50%,-50%);
+ 	background-color:rgba(0,0,255,0.7);
+ 	font-weight:bold;
+ }
+ 
+ #jumb_page h1, #jumb_page p{
+ 	color:red;
+ 	font-weight:bold;
+ }
+
+.con_us{
+	font-style:italic;
+	color:blue;
+	font-family:Sans-serif;
+}
+
+.view_order{
+	margin-left:35%;
+}
+
+.payment_info, .shipping_info{
+	margin-left:35%;
+}
