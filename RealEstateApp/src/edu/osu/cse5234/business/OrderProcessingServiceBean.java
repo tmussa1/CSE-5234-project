@@ -13,8 +13,12 @@ import javax.jms.ConnectionFactory;
 import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import com.ups.shipping.client.ShippingInitiationClient;
 
 import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.business.view.Item;
@@ -30,6 +34,9 @@ import edu.osu.cse5234.util.ServiceLocator;
 @Resource(name = "jms/emailQCF", lookup = "jms/emailQCF", type = ConnectionFactory.class)
 public class OrderProcessingServiceBean {
 
+	
+	private static String shippingResourceURI = "http://localhost:9081/UPS/jaxrs";
+	
 	@PersistenceContext
 	EntityManager entityManager;
 
@@ -54,6 +61,24 @@ public class OrderProcessingServiceBean {
 			entityManager.flush();
 			notifyUser();
 		}
+		
+		JsonObject shipJson = Json.createObjectBuilder()
+								.add("Organization", "Flintstone Homes")
+								.add("OrderRefId", "E35961")
+								.add("Zip", "43213")
+								.add("ItemsNumber", 6)
+								.build();
+		
+		ShippingInitiationClient shipClient = new ShippingInitiationClient(shippingResourceURI);
+		JsonObject confirmJson = shipClient.invokeInitiateShipping(shipJson);
+		
+		boolean accepted = confirmJson.getBoolean("Accepted");
+		int shippingReference = confirmJson.getInt("ShippingReferenceNumber");
+		
+		if(accepted) {
+			System.out.println("Shipping reference number is " + shippingReference);
+		}
+		
 
 		return "E35961" + new Random().nextInt(1000);
 	}

@@ -5,6 +5,7 @@ import javax.naming.NamingException;
 
 import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.InventoryService;
+import edu.osu.cse5234.business.view.InventoryServiceBean2Remote;
 
 public class ServiceLocator {
 
@@ -19,12 +20,12 @@ public class ServiceLocator {
 			}
 	}
 	
-	public static InventoryService getInventoryService() { 
+	public static InventoryServiceBean2Remote getInventoryService() { 
 		try 
 		{
-			return (InventoryService) InitialContext.doLookup("java:global/RealEstate-InventoryManagementEAR/RealEstate-InventoryManagement"
-					+ "/InventoryServiceBean!"
-					+ "edu.osu.cse5234.business.view.InventoryService");
+			return (InventoryServiceBean2Remote) InitialContext.doLookup("java:global/RealEstate-InventoryManagementEAR/RealEstate-InventoryManagement"
+					+ "/InventoryServiceBean2!"
+					+ "edu.osu.cse5234.business.view.InventoryServiceBean2Remote");
 			} catch (NamingException ne) {
 				throw new RuntimeException(ne);
 			}

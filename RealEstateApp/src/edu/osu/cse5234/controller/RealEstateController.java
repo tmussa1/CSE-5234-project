@@ -46,7 +46,7 @@ public class RealEstateController {
 	public String displayItems(HttpServletRequest request , HttpServletResponse response) {
 	
 		Order order = new Order();
-		edu.osu.cse5234.business.view.InventoryService inventory = ServiceLocator.getInventoryService();
+		edu.osu.cse5234.business.view.InventoryServiceBean2Remote inventory = ServiceLocator.getInventoryService();
 		List<Item>itemList = inventory.getAvailableInventory().getItems();
 		List<LineItem> lineItemList = LineItem.itemToLineItemConverter(itemList);
 		
