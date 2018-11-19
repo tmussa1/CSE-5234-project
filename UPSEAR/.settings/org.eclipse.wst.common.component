@@ -9,5 +9,9 @@
             <dependent-object>Module_1541634435120</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="RealEstate-InventoryBatchApplication.war" deploy-path="/" handle="module:/resource/RealEstate-InventoryBatchApplication/RealEstate-InventoryBatchApplication">
+            <dependent-object>Module_1542576107317</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

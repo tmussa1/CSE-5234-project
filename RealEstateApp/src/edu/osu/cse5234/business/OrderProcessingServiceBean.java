@@ -21,6 +21,7 @@ import javax.persistence.PersistenceContext;
 import com.ups.shipping.client.ShippingInitiationClient;
 
 import edu.osu.cse5234.business.view.InventoryService;
+import edu.osu.cse5234.business.view.InventoryServiceBean2Remote;
 import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.model.LineItem;
 import edu.osu.cse5234.model.Order;
@@ -52,7 +53,7 @@ public class OrderProcessingServiceBean {
 	}
 
 	public String processOrder(Order order) {
-		InventoryService inventory = ServiceLocator.getInventoryService();
+		InventoryServiceBean2Remote inventory = ServiceLocator.getInventoryService();
 		List<Item> itemList = converter(order);
 
 		if (inventory.validateQuantity(itemList)) {
